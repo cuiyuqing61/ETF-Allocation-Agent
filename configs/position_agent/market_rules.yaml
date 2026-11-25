@@ -1,0 +1,26 @@
+version: sse-equity-etf-v1
+instrument: '510300'
+exchange: SSE
+timezone: Asia/Shanghai
+buy_lot: 100
+sell_lot: 100
+min_quantity: 100
+tick_size: 0.001
+sell_availability: next_session
+price_limit_fraction: 0.10
+missing_bar: fail_closed
+zero_volume: no_fill
+limit_open: reject_buy_at_upper_or_sell_at_lower
+fill_rounding: adverse_tick
+availability: '15:30:00+08:00'
+availability_semantics: historical_assumption_not_point_in_time_capture
+cash_interest: 0.0
+terminal_liquidation: false
+corporate_actions: record_close_ex_open_pay_close
+dividend_cash_available: next_session_after_pay_date
+share_conversion: fail_closed_without_verified_allocation_rules
+ex_reference: previous_raw_close_minus_cash_dividend
+account_scope: secondary_market_designated_broker
+sources:
+  - https://www.sse.com.cn/assortment/fund/etf/question/c/c_20240118_5734754.shtml
+  - https://www.sse.com.cn/assortment/fund/etf/question/

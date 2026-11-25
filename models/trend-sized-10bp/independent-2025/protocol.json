@@ -1,0 +1,141 @@
+{
+  "checkpoints": {
+    "11": {
+      "config.json": "379baaa316dd12c9fbe1b361c45fc82caa36277dc7c1cce62c9ec8f7eeefc532",
+      "model.zip": "b1d1e07e6b56df6574e35b2f99ba3d8f5f988696f4d701d978e95c8f458d674c",
+      "scaler.json": "42324b9a14c3858bdfb707869739c486a878de5bc66f9a1830a54e18c580cbe2"
+    },
+    "23": {
+      "config.json": "cc1509ff7ed8aa63ef37389d8b83d911932f6537192074f51685483554a47d23",
+      "model.zip": "fe0499c1b82e82036e6d173d2d4867e99b1b031af5cf8cf030f9fe601631f80a",
+      "scaler.json": "42324b9a14c3858bdfb707869739c486a878de5bc66f9a1830a54e18c580cbe2"
+    },
+    "47": {
+      "config.json": "d270b569a056883857b4edaed1b350675b03c63c8a3319ace1d1b5d9354ef09c",
+      "model.zip": "88ca20f1ed17a9d56a00889973ec4b92610901015aa3ee6d616ceb5543c8bc0d",
+      "scaler.json": "42324b9a14c3858bdfb707869739c486a878de5bc66f9a1830a54e18c580cbe2"
+    }
+  },
+  "comparator": "Per-seed net return and maximum drawdown signed differences vs fixed-50",
+  "corporate_actions_version": "422f091a385a46ea5e3f6619b68466be09cb860a06cf4e81ebf27bee7ba65c34",
+  "costs": {
+    "fee_rate": 0.0005,
+    "minimum_fee": 0.0,
+    "semantics": "research_assumption_not_broker_quote",
+    "sensitivity_bps": [
+      2,
+      5,
+      10
+    ],
+    "slippage_cash": "diagnostic_only_already_in_fill_price",
+    "slippage_rate": 0.0005,
+    "stamp_tax_rate": 0.0,
+    "version": "research-costs-v1"
+  },
+  "dataset": {
+    "corporate_actions_hash": "270e738663611929e6140f3a6acfd3f449c0f3075f8a6a7a477e5162fcc6f18b",
+    "dataset_id": "2b378e685e07e38e9da3dcd21bcffb2ee33704785227421159b6dd4dfc3be86c",
+    "normalized_hash": "04052d3e5a1e52c57d153016c137c45ab14dad0a0085af26b4d6c3a9c3e705ba",
+    "raw_hash": "ce6c279145951966b7b3373b667ff0c913382727e83639d7d2ed9f98df7ae4f6"
+  },
+  "dependency_locks": {
+    "requirements-position-agent-rl.lock": "a3c23146d10893dbfd55709a236e7a5bd9665f326b89fca3ada98be956437150",
+    "requirements-position-agent.lock": "de9cf232276d4b0cd1de80570d003211d49b698cab8e888b97449102e2da4afb"
+  },
+  "first_decision": "Last market close before 2025 with at least 50 available trailing sessions",
+  "initial_capital": 100000.0,
+  "instrument": "510300",
+  "market_rules": {
+    "account_scope": "secondary_market_designated_broker",
+    "availability": "15:30:00+08:00",
+    "availability_semantics": "historical_assumption_not_point_in_time_capture",
+    "buy_lot": 100,
+    "cash_interest": 0.0,
+    "corporate_actions": "record_close_ex_open_pay_close",
+    "dividend_cash_available": "next_session_after_pay_date",
+    "ex_reference": "previous_raw_close_minus_cash_dividend",
+    "exchange": "SSE",
+    "fill_rounding": "adverse_tick",
+    "instrument": "510300",
+    "limit_open": "reject_buy_at_upper_or_sell_at_lower",
+    "min_quantity": 100,
+    "missing_bar": "fail_closed",
+    "price_limit_fraction": 0.1,
+    "sell_availability": "next_session",
+    "sell_lot": 100,
+    "share_conversion": "fail_closed_without_verified_allocation_rules",
+    "sources": [
+      "https://www.sse.com.cn/assortment/fund/etf/question/c/c_20240118_5734754.shtml",
+      "https://www.sse.com.cn/assortment/fund/etf/question/"
+    ],
+    "terminal_liquidation": false,
+    "tick_size": 0.001,
+    "timezone": "Asia/Shanghai",
+    "version": "sse-equity-etf-v1",
+    "zero_volume": "no_fill"
+  },
+  "period": [
+    "2025-01-01",
+    "2025-12-31"
+  ],
+  "primary": "Pass only if each of the three net returns is strictly positive",
+  "reference_policy": "Fixed 0.5 raw action with identical MA50 and HOLD rule",
+  "report": [
+    "total_return",
+    "max_drawdown",
+    "turnover",
+    "trades",
+    "fees",
+    "slippage",
+    "average_exposure",
+    "cash_days",
+    "dividends",
+    "daily decisions",
+    "executions",
+    "NAV"
+  ],
+  "runtime": {
+    "gymnasium": "1.4.0",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "pandas-market-calendars": "5.5.0",
+    "stable-baselines3": "2.9.2",
+    "torch": "2.14.1"
+  },
+  "seeds": [
+    11,
+    23,
+    47
+  ],
+  "settings": {
+    "episode_sessions": 252,
+    "exposure_penalty_bps": 0,
+    "hold_band": 0.075,
+    "learning_rate": 0.0003,
+    "steps": 100000,
+    "trend_floor": 0.4,
+    "trend_sessions": 50,
+    "trend_span": 0.2,
+    "turnover_bps": 10
+  },
+  "sources": {
+    "src/backtest/backtest_engine.py": "49f6b38702351b611b95bba7150aee81d2aed8a9b17fb03cd9db4b3c23dfd645",
+    "src/backtest/position_replay.py": "ff55203b151a0bda50e215a2c137805e632a46ce3797bfb80720112b9fd5d646",
+    "src/data/akshare_provider.py": "83b05f2b798c09a1a8910736dbaa6628161375b10155be466c8db1d73cf73ecf",
+    "src/data/corporate_actions.py": "dea271f65c28c736e4f6e044ebc62e41a48e69f212f2135b3da7715a03c35821",
+    "src/data/position_store.py": "51a6502c3066f3b942ed24a6a8794c8e37461a3de2674662c364c0e8689ff225",
+    "src/data/trading_calendar.py": "52c330b259693b0defb9de0e6ef3eb441a57481ebcc80ab96f0f5c2701698d75",
+    "src/extensions/position_agent/ppo_experiment.py": "ea2912c7c0cb71c548077b3489751c969252275385ca14b7cb2e2e6dd9db8d08",
+    "src/extensions/position_agent/test_daily_holdout.py": "827f6a47cf89f5e16574014e0e79c6b67dd96527906998989bf1d34eff769f29",
+    "src/extensions/position_agent/train_daily_iteration.py": "3d60b1c325033f0b7925ff53fb5897355bee23ac71567748618fc6f9f2aad658",
+    "src/extensions/position_agent/train_midweek.py": "ecd60e4150c54f88aa1ce91209479a7b005ecf51bd93f7cfb7615280a3ebb52e",
+    "src/extensions/position_agent/train_transformer.py": "330c01448c3af31420d0d767fafcc018bc3486390ff5d1e4ce857a737165ba46",
+    "src/extensions/position_agent/train_transformer_turnover.py": "c3cf608030b77092cfa6912a61a9772732c44386dba861e983787f0816f4e7d6",
+    "src/strategies/etf_ppo.py": "0330fd78a416bef9dc8e100c30a9d25ed776af4669485395992c15ba8763faa4",
+    "src/strategies/etf_transformer.py": "1c18ac12e06ea3df9b579f548988b4c31e2ce89425338a670f140eb6bcca207d",
+    "src/trading/corporate_actions.py": "c5978974448f87716b1dc95c67f5cbcc67f3fcdabb35a1b119184d3196f4d68c",
+    "src/trading/position_execution.py": "4805844ceea73e5f52a2e936cfa6c8140eedd3d60102f855b0c818f86880e1ea"
+  },
+  "terminal": "Last 2025 market close NAV; positions marked and no terminal order",
+  "variant": "trend-sized-10bp"
+}

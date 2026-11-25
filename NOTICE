@@ -1,0 +1,13 @@
+ETF Allocation Agent
+
+This project builds on FinRL-X (FinRL-Trading) by the AI4Finance Foundation.
+Upstream source: https://github.com/AI4Finance-Foundation/FinRL-Trading
+Upstream revision: 4409abe925c904e570be78ebfb5e77ac3491dff8
+Upstream license: Apache License, Version 2.0. See LICENSE.
+
+Modified upstream files included in this release:
+  src/__init__.py
+  src/data/data_store.py
+  src/data/trading_calendar.py
+
+src/backtest/position_replay.py adapts the FinRL-X backtest interface for next-open ETF execution.

@@ -1,0 +1,8 @@
+version: research-costs-v1
+fee_rate: 0.0005
+minimum_fee: 0.0
+slippage_rate: 0.0005
+stamp_tax_rate: 0.0
+semantics: research_assumption_not_broker_quote
+sensitivity_bps: [2, 5, 10]
+slippage_cash: diagnostic_only_already_in_fill_price

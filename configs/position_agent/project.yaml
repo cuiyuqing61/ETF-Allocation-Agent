@@ -1,0 +1,24 @@
+version: position-agent-v1
+instrument: '510300'
+exchange: SSE
+timezone: Asia/Shanghai
+source: AKSHARE
+provider: fund_etf_hist_em
+start: '2014-11-01'
+end: '2025-12-31'
+adjustment: none
+return_basis: cash_dividends_accrual
+corporate_actions_version: 422f091a385a46ea5e3f6619b68466be09cb860a06cf4e81ebf27bee7ba65c34
+initial_capital: 100000.0
+base_dir: data/position_agent
+splits:
+  train: ['2015-01-01', '2021-12-31']
+  validation: ['2022-01-01', '2024-12-31']
+  test: ['2025-01-01', '2025-12-31']
+seeds: [11, 23, 47]
+features_version: causal-relative-v1
+ma_windows: [10, 20]
+training_budgets: [10000, 100000]
+selection: highest_validation_net_return_then_lower_drawdown_then_lower_seed
+final_test_enabled: false
+large_training_enabled: true

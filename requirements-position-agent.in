@@ -1,0 +1,17 @@
+# Minimal tested FinRL-X execution path, Python 3.11; upstream requirements retained.
+numpy<3
+pandas<3
+scipy
+matplotlib
+bt
+yfinance
+pandas-market-calendars
+tzlocal
+pydantic
+pydantic-settings
+python-dotenv
+PyYAML
+pytest
+akshare
+streamlit
+plotly

@@ -1,0 +1,210 @@
+{
+  "frozen_base_plan": {
+    "budget_comparison": "independent training from scratch; summarize all seeds with median and range",
+    "code_hash": "ecb1e39f9866554358ca468093ded8fa519bc3c3488d7ed685c930b51f2bd1c3",
+    "corporate_actions_hash": "270e738663611929e6140f3a6acfd3f449c0f3075f8a6a7a477e5162fcc6f18b",
+    "costs": {
+      "fee_rate": 0.0005,
+      "minimum_fee": 0.0,
+      "semantics": "research_assumption_not_broker_quote",
+      "sensitivity_bps": [
+        2,
+        5,
+        10
+      ],
+      "slippage_cash": "diagnostic_only_already_in_fill_price",
+      "slippage_rate": 0.0005,
+      "stamp_tax_rate": 0.0,
+      "version": "research-costs-v1"
+    },
+    "dataset_id": "2b378e685e07e38e9da3dcd21bcffb2ee33704785227421159b6dd4dfc3be86c",
+    "dependency_locks": {
+      "requirements-position-agent-rl.lock": "a3c23146d10893dbfd55709a236e7a5bd9665f326b89fca3ada98be956437150",
+      "requirements-position-agent.lock": "de9cf232276d4b0cd1de80570d003211d49b698cab8e888b97449102e2da4afb"
+    },
+    "market_rules": {
+      "account_scope": "secondary_market_designated_broker",
+      "availability": "15:30:00+08:00",
+      "availability_semantics": "historical_assumption_not_point_in_time_capture",
+      "buy_lot": 100,
+      "cash_interest": 0.0,
+      "corporate_actions": "record_close_ex_open_pay_close",
+      "dividend_cash_available": "next_session_after_pay_date",
+      "ex_reference": "previous_raw_close_minus_cash_dividend",
+      "exchange": "SSE",
+      "fill_rounding": "adverse_tick",
+      "instrument": "510300",
+      "limit_open": "reject_buy_at_upper_or_sell_at_lower",
+      "min_quantity": 100,
+      "missing_bar": "fail_closed",
+      "price_limit_fraction": 0.1,
+      "sell_availability": "next_session",
+      "sell_lot": 100,
+      "share_conversion": "fail_closed_without_verified_allocation_rules",
+      "sources": [
+        "https://www.sse.com.cn/assortment/fund/etf/question/c/c_20240118_5734754.shtml",
+        "https://www.sse.com.cn/assortment/fund/etf/question/"
+      ],
+      "terminal_liquidation": false,
+      "tick_size": 0.001,
+      "timezone": "Asia/Shanghai",
+      "version": "sse-equity-etf-v1",
+      "zero_volume": "no_fill"
+    },
+    "normalized_hash": "04052d3e5a1e52c57d153016c137c45ab14dad0a0085af26b4d6c3a9c3e705ba",
+    "observations": [
+      "return_1",
+      "return_5",
+      "return_20",
+      "relative_ma10",
+      "relative_ma20",
+      "volatility20",
+      "relative_volume20",
+      "exposure",
+      "cash_fraction",
+      "drawdown"
+    ],
+    "ppo": {
+      "algorithm": "PPO",
+      "batch_size": 200,
+      "budget_mode": "independent_from_scratch",
+      "budget_tie_break": "lower_steps_after_return_drawdown_seed",
+      "clip_range": 0.2,
+      "deterministic_torch": true,
+      "device": "cpu",
+      "ent_coef": 0.0,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "learning_rate": 0.0003,
+      "max_grad_norm": 0.5,
+      "n_epochs": 10,
+      "n_steps": 1000,
+      "normalize_advantage": true,
+      "policy": "MlpPolicy",
+      "policy_kwargs": {
+        "net_arch": [
+          64,
+          64
+        ]
+      },
+      "reward": "log_equity_ratio_after_costs_and_dividends",
+      "selection_split": "validation",
+      "torch_num_threads": 1,
+      "version": "ppo-formal-v1",
+      "vf_coef": 0.5
+    },
+    "project": {
+      "adjustment": "none",
+      "base_dir": "data/position_agent",
+      "corporate_actions_version": "422f091a385a46ea5e3f6619b68466be09cb860a06cf4e81ebf27bee7ba65c34",
+      "end": "2025-12-31",
+      "exchange": "SSE",
+      "features_version": "causal-relative-v1",
+      "final_test_enabled": false,
+      "initial_capital": 100000.0,
+      "instrument": "510300",
+      "large_training_enabled": true,
+      "ma_windows": [
+        10,
+        20
+      ],
+      "provider": "fund_etf_hist_em",
+      "return_basis": "cash_dividends_accrual",
+      "seeds": [
+        11,
+        23,
+        47
+      ],
+      "selection": "highest_validation_net_return_then_lower_drawdown_then_lower_seed",
+      "source": "AKSHARE",
+      "splits": {
+        "test": [
+          "2025-01-01",
+          "2025-12-31"
+        ],
+        "train": [
+          "2015-01-01",
+          "2021-12-31"
+        ],
+        "validation": [
+          "2022-01-01",
+          "2024-12-31"
+        ]
+      },
+      "start": "2014-11-01",
+      "timezone": "Asia/Shanghai",
+      "training_budgets": [
+        10000,
+        100000
+      ],
+      "version": "position-agent-v1"
+    },
+    "protocol": "ppo-formal-v1",
+    "raw_hash": "ce6c279145951966b7b3373b667ff0c913382727e83639d7d2ed9f98df7ae4f6",
+    "runtime": {
+      "packages": {
+        "gymnasium": "1.4.0",
+        "numpy": "2.4.6",
+        "pandas": "2.3.3",
+        "stable-baselines3": "2.9.2",
+        "torch": "2.14.1"
+      },
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "python": "3.11.15"
+    },
+    "selection": "all six candidates: highest validation net return, lower max drawdown, lower seed, lower budget",
+    "test_consumed": false,
+    "train_input_hash": "3490dd79e44359c09603daf5158e49a96bf4292acf375d023a98ae0f4a7b173f",
+    "upstream_commit": "4409abe925c904e570be78ebfb5e77ac3491dff8"
+  },
+  "initial_std": 0.3,
+  "network": "transformer20-v1",
+  "observation": {
+    "account": [
+      "exposure",
+      "cash_fraction",
+      "drawdown"
+    ],
+    "history": 40,
+    "market": [
+      "return_1",
+      "return_5",
+      "return_20",
+      "relative_ma10",
+      "relative_ma20",
+      "volatility20",
+      "relative_volume20"
+    ],
+    "order": "oldest_first",
+    "version": "transformer20-v1",
+    "window": 20
+  },
+  "ppo": {
+    "batch_size": 200,
+    "clip_range": 0.2,
+    "device": "cpu",
+    "ent_coef": 0.0,
+    "gae_lambda": 0.95,
+    "gamma": 0.99,
+    "learning_rate": 0.0003,
+    "max_grad_norm": 0.5,
+    "n_epochs": 10,
+    "n_steps": 1000,
+    "normalize_advantage": true,
+    "vf_coef": 0.5
+  },
+  "seed": 11,
+  "settings": {
+    "episode_sessions": 252,
+    "exposure_penalty_bps": 0,
+    "hold_band": 0.075,
+    "learning_rate": 0.0003,
+    "steps": 100000,
+    "trend_floor": 0.4,
+    "trend_sessions": 50,
+    "trend_span": 0.2,
+    "turnover_bps": 10
+  },
+  "steps": 100000,
+  "variant": "trend-sized-10bp"
+}
